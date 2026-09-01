@@ -1,1 +1,61 @@
-
+{
+  "official_ml08": {
+    "modeling_rows": 27532,
+    "declining_rows": 15525,
+    "declining_rate": 0.5639,
+    "training_rows": 22025,
+    "test_rows": 5507,
+    "baseline_precision_at_50": 0.66,
+    "model_precision_at_50": 0.78,
+    "absolute_improvement": 0.12,
+    "relative_improvement_pct": 18.18,
+    "feature_importance": {
+      "impressions_90d": 0.41692,
+      "content_age_days": 0.373305,
+      "avg_position": 0.135047,
+      "ctr": 0.074728,
+      "days_since_last_update": 0.0,
+      "search_volume": 0.0
+    },
+    "false_positives": 1842,
+    "false_negatives": 182
+  },
+  "tie_sensitivity_note": {
+    "rows_tied_at_top_score": 2516,
+    "test_rows_total": 5507,
+    "rerun_baseline_precision_at_50": 0.66,
+    "rerun_model_precision_at_50": 0.78
+  },
+  "grouped_honesty_check": {
+    "train_clients": 24,
+    "test_clients": 7,
+    "client_overlap_train_test": 0,
+    "baseline_precision_at_50_grouped": 0.48,
+    "model_precision_at_50_grouped": 0.8
+  },
+  "top50_profile": {
+    "share_actually_declining_in_top50": 0.78,
+    "pct_top50_ctr_below_overall_median": 0.54,
+    "pct_top50_content_age_above_overall_median": 0.22,
+    "pct_top50_impressions_above_overall_median": 0.54
+  },
+  "features": [
+    "days_since_last_update",
+    "impressions_90d",
+    "search_volume",
+    "avg_position",
+    "ctr",
+    "content_age_days"
+  ],
+  "target_definition": "is_declining = (trend_direction == 'down')",
+  "excluded_leakage_fields": [
+    "trend_direction",
+    "trend_pct"
+  ],
+  "model_config": {
+    "type": "DecisionTreeClassifier",
+    "max_depth": 3,
+    "random_state": 42
+  },
+  "split_config_official": "80/20 stratified train_test_split, random_state=42, stratify=y"
+}
